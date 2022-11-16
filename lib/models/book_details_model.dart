@@ -91,7 +91,7 @@ class BookDetailsModel {
       url: url,
       pdf: pdf?.clone());
 
-  factory BookDetailsModel.empty() => BookDetailsModel(
+  factory BookDetailsModel.empty() => const BookDetailsModel(
       error: ' ',
       title: ' ',
       subtitle: ' ',

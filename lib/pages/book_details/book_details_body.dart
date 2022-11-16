@@ -4,7 +4,6 @@ import '../../controllers/book_details_controller.dart';
 import '../../models/book_details_model.dart';
 import '../../translations/app_translations.dart';
 import 'package:get/get.dart';
-import '../../utils/base_url.dart';
 import '../../utils/constants.dart';
 import '../../widgets/divider_widget.dart';
 import '../../widgets/image_net.dart';
@@ -44,7 +43,7 @@ class BookDetailsBody extends StatelessWidget {
                               Stack(
                                 children: [
 // Photo
-                                  Container(
+                                  SizedBox(
                                     height: 300,
                                     width: Get.width,
                                     child: ClipRRect(
@@ -64,7 +63,7 @@ class BookDetailsBody extends StatelessWidget {
                                     child: Center(
                                       child: Text(
                                         _bookDetailsController.bookDetails.value.year,
-                                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+                                        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
                                       ),
                                     ),
                                   )
@@ -84,11 +83,11 @@ class BookDetailsBody extends StatelessWidget {
                                       children: [
                                         Text(
                                           PRICE.tr,
-                                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                                          style: const TextStyle(fontSize: 16),
                                         ),
                                         Text(
                                           _bookDetailsController.bookDetails.value.price,
-                                          style: const TextStyle(fontSize: 16, color: Colors.red),
+                                          style: const TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w700),
                                         ),
                                       ],
                                     ),
@@ -96,11 +95,11 @@ class BookDetailsBody extends StatelessWidget {
                                       children: [
                                         Text(
                                           RATING.tr,
-                                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                                          style: const TextStyle(fontSize: 16),
                                         ),
                                         Text(
                                           _bookDetailsController.bookDetails.value.rating,
-                                          style: const TextStyle(fontSize: 16, color: Colors.red),
+                                          style: const TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w700),
                                         ),
                                       ],
                                     ),
@@ -108,11 +107,11 @@ class BookDetailsBody extends StatelessWidget {
                                       children: [
                                         Text(
                                           PAGES.tr,
-                                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                                          style: const TextStyle(fontSize: 16),
                                         ),
                                         Text(
                                           _bookDetailsController.bookDetails.value.pages,
-                                          style: const TextStyle(fontSize: 16),
+                                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                                         ),
                                       ],
                                     ),
@@ -121,28 +120,26 @@ class BookDetailsBody extends StatelessWidget {
                               ),
 
                               divider(0, 3, 0, 0),
-
 // Authors
-                              Container(
-                                //alignment: Alignment.center,
-                                width: MediaQuery.of(context).size.width,
+                              SizedBox(
+                                width: Get.width,
                                 child: Padding(
-                                  padding: EdgeInsets.all(15),
+                                  padding: const EdgeInsets.all(15),
                                   child: Text(
                                     _bookDetailsController.bookDetails.value.authors,
                                     textAlign: TextAlign.end,
-                                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, fontStyle: FontStyle.italic, color: Colors.blue),
+                                    style:
+                                        const TextStyle(fontSize: 14, fontWeight: FontWeight.w700, fontStyle: FontStyle.italic, color: Colors.blue),
                                     maxLines: 2,
                                     softWrap: true,
                                   ),
                                 ),
                               ),
-
 // Title
                               Container(
-                                padding: EdgeInsets.only(left: 20, right: 20),
+                                padding: const EdgeInsets.only(left: 20, right: 20),
                                 alignment: Alignment.centerLeft,
-                                width: MediaQuery.of(context).size.width,
+                                width: Get.width,
                                 child: Text(
                                   _bookDetailsController.bookDetails.value.title.toUpperCase(),
                                   textAlign: TextAlign.center,
@@ -151,11 +148,9 @@ class BookDetailsBody extends StatelessWidget {
                                   softWrap: true,
                                 ),
                               ),
-
 // SubTitle
-                              Container(
-                                //alignment: Alignment.center,
-                                width: MediaQuery.of(context).size.width,
+                              SizedBox(
+                                width: Get.size.width,
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 20, top: 10, bottom: 10, right: 20),
                                   child: Text(
@@ -171,7 +166,7 @@ class BookDetailsBody extends StatelessWidget {
                               divider(0, 3, 0, 0),
 // Description
                               Container(
-                                padding: EdgeInsets.only(left: 20, bottom: 10, top: 20, right: 20),
+                                padding: const EdgeInsets.only(left: 20, bottom: 10, top: 20, right: 20),
                                 alignment: Alignment.centerLeft,
                                 child: Column(
                                   children: [Text(_bookDetailsController.bookDetails.value.desc)],
@@ -179,13 +174,12 @@ class BookDetailsBody extends StatelessWidget {
                               ),
 
                               divider(0, 10, 0, 10),
-
 // Publisher
                               Container(
                                 alignment: Alignment.center,
-                                width: MediaQuery.of(context).size.width,
+                                width: Get.size.width,
                                 child: Padding(
-                                  padding: EdgeInsets.all(10),
+                                  padding: const EdgeInsets.all(10),
                                   child: Wrap(
                                     alignment: WrapAlignment.center,
                                     spacing: 20,
@@ -209,6 +203,7 @@ class BookDetailsBody extends StatelessWidget {
                                   ),
                                 ),
                               ),
+
                               divider(0, 10, 0, 10),
 // Full info
                               InkWell(

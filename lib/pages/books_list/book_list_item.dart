@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import '../../controllers/book_details_controller.dart';
 import '../../models/book_list_item_model.dart';
 import '../../translations/app_translations.dart';
-import '../../utils/base_url.dart';
 import '../../utils/constants.dart';
 import '../../widgets/divider_widget.dart';
 import '../../widgets/image_net.dart';

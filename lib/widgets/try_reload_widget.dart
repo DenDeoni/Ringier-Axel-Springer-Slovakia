@@ -19,16 +19,6 @@ class TryReloadWidget extends StatelessWidget {
         spacing: 5.0,
         children: [
           Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.7),
-                  blurRadius: 3,
-                  offset: const Offset(0, 4), // changes position of shadow
-                ),
-              ],
-            ),
             padding: const EdgeInsets.all(8),
             child: Text(
               NO_DATA.tr,
@@ -36,12 +26,19 @@ class TryReloadWidget extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            style: ButtonStyle(elevation: MaterialStateProperty.all(4)),
+            style: ElevatedButton.styleFrom(
+              primary: const Color.fromARGB(255, 205, 38, 102),
+              padding: const EdgeInsets.only(left: 10, right: 10),
+              shape: const StadiumBorder(),
+            ),
             onPressed: () async {
               dynamic controller = _setController(inputController);
               controller.fetchData();
             },
-            child: Text(TRY_RELOAD.tr),
+            child: Text(
+              TRY_RELOAD.tr,
+              style: const TextStyle(fontSize: 16),
+            ),
           )
         ],
       ),

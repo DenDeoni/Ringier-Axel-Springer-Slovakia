@@ -3,19 +3,19 @@ import '../controllers/books_find_page_controller.dart';
 import '../translations/app_translations.dart';
 import 'package:get/get.dart';
 
-class FilterButton extends StatelessWidget {
+class SearchButton extends StatelessWidget {
   final BooksFindPageController _booksFindPageController = Get.find();
 
-  FilterButton({Key? key}) : super(key: key);
+  SearchButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(top: 10),
       width: Get.width - 20,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: Colors.grey,
+          primary: const Color.fromARGB(255, 205, 38, 102),
           padding: const EdgeInsets.only(left: 10, right: 10),
           shape: const StadiumBorder(),
         ),
@@ -24,7 +24,7 @@ class FilterButton extends StatelessWidget {
         },
         child: Text(
           FIND.tr.toUpperCase(),
-          style: const TextStyle(fontSize: 14),
+          style: const TextStyle(fontSize: 16),
         ),
       ),
     );

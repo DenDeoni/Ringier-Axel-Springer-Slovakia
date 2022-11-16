@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ringier_axel_springer_test/utils/constants.dart';
+import 'package:ringier_axel_springer_test/widgets/progress_page.dart';
 import '../controllers/books_find_page_controller.dart';
-import '../widgets/filter_button.dart';
+import '../translations/app_translations.dart';
+import '../utils/to_list_iterable.dart';
+import '../widgets/search_button.dart';
 import '../widgets/input_field.dart';
 import '../widgets/try_reload_widget.dart';
-import 'events_list/book_list_item.dart';
+import 'books_list/book_list_item.dart';
 
 class BooksSearchPage extends StatelessWidget {
   late final double fontSize = 16;
@@ -32,8 +36,8 @@ class BooksSearchPage extends StatelessWidget {
     });
 
     return RawScrollbar(
-      thumbColor: Colors.grey,
-      thickness: 3,
+      thumbColor: Colors.red,
+      thickness: 5,
       controller: _scrollController,
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -63,14 +67,46 @@ class BooksSearchPage extends StatelessWidget {
               () {
                 return SliverList(
                   delegate: SliverChildListDelegate(
+// -- Progress bar is showings --
+                    _booksFindPageController.dataLoading.value == true && _booksFindPageController.dataLoadFail.value == false
+                        ? toList(
+                            () => {
+                              Container(
+                                color: Colors.white,
+                                width: Get.width,
+                                height: Get.height / 5,
+                                child: const Center(
+                                    child: CircularProgressIndicator(
+                                  color: Colors.grey,
+                                )),
+                              )
+                            },
+                          )
+                        :
 // -- Block Events List created and showings--
-                    _booksFindPageController.booksList.map((content) {
-                      Padding widget = Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: BookListItem(content),
-                      );
-                      return widget;
-                    }).toList(growable: false),
+
+                        _booksFindPageController.dataLoading.value == false && _booksFindPageController.dataLoadFail.value == false
+                            ? _booksFindPageController.booksList.map((content) {
+                                Padding widget = Padding(
+                                  padding: const EdgeInsets.only(top: 8.0),
+                                  child: BookListItem(content),
+                                );
+                                return widget;
+                              }).toList(growable: false)
+
+// -- Block - IF Data Loaded is Fail, NO DATA text --
+                            : toList(
+                                () => {
+                                  Align(
+                                    alignment: Alignment.bottomCenter,
+                                    child: Container(
+                                      height: 100,
+                                      alignment: Alignment.bottomCenter,
+                                      child: TryReloadWidget(SEARCH_LIST_CONTROLLER),
+                                    ),
+                                  ),
+                                },
+                              ),
                   ),
                 );
               },
@@ -110,7 +146,7 @@ class BooksSearchPage extends StatelessWidget {
         key: _keyHeaderFindBooks,
         children: [
           InputTextField(),
-          FilterButton(),
+          SearchButton(),
         ],
       ),
     );

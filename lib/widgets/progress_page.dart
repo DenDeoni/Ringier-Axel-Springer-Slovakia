@@ -9,6 +9,7 @@ class ProgressPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('PROGRESS PAGE');
     return Obx(
       () => Container(
         height: 500,
@@ -17,8 +18,8 @@ class ProgressPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(15.0),
+            const Padding(
+              padding: EdgeInsets.all(15.0),
               child: CircularProgressIndicator(
                 color: Colors.grey,
               ),

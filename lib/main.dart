@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
             systemOverlayStyle: SystemUiOverlayStyle.dark,
             toolbarHeight: 50,
             leadingWidth: 0,
-            backgroundColor: Colors.white,
+            backgroundColor: Color.fromARGB(255, 17, 75, 112),
             automaticallyImplyLeading: false,
             title: AppLogo(),
             iconTheme: const IconThemeData(color: Colors.grey),

@@ -41,13 +41,21 @@ class BooksFindPageController extends GetxController {
     if (searchedText.value.length >= 2) {
       fetchData();
     } else {
-      Get.snackbar('!', TOO_MUCH_SHORT.tr);
+      Get.snackbar(
+        '!',
+        TOO_MUCH_SHORT.tr,
+        backgroundColor: const Color.fromARGB(230, 255, 255, 255),
+      );
     }
   }
 
   void emptyResponseMessage() {
     if (booksList.isEmpty) {
-      Get.snackbar(NOTHNING_FOUND.tr, TRY_CHANGE_REQUEST.tr);
+      Get.snackbar(
+        NOTHNING_FOUND.tr,
+        TRY_CHANGE_REQUEST.tr,
+        backgroundColor: const Color.fromARGB(230, 255, 255, 255),
+      );
     }
   }
 }
