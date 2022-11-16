@@ -32,10 +32,10 @@ class BookListItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
 // Image block
-                      Stack(
+                      Wrap(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left: 10.0, top: 5),
+                            padding: const EdgeInsets.only(left: 0.0, top: 5),
                             child: ClipRRect(
                               child: _content.image != null
                                   ? imageNetwork(
@@ -60,12 +60,12 @@ class BookListItem extends StatelessWidget {
                           ),
 
 // Content block
-                          BookItemContent(_content, false),
+                          BookItemContent(_content),
                         ],
                       ),
                     ],
                   ),
-                  Container(child: divider(0, 25, 0, 15)),
+                  Container(child: divider(0, 15, 0, 15)),
                 ],
               ),
             ),

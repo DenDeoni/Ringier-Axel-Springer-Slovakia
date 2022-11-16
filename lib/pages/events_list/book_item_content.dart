@@ -2,44 +2,69 @@ import 'package:flutter/material.dart';
 import '../../models/book_list_item_model.dart';
 import 'package:get/get.dart';
 
+import '../../translations/app_translations.dart';
+
 class BookItemContent extends StatelessWidget {
   final BookListItemModel content;
-  final bool isLarge;
 
-  BookItemContent(this.content, this.isLarge);
+  BookItemContent(this.content);
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 15.0, top: 0),
-          child: Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+    return Container(
+      child: Wrap(
+        spacing: 10,
+        direction: Axis.vertical,
+        children: [
 // Title
-                Container(
-                  padding: EdgeInsets.only(top: 5),
-                  alignment: Alignment.centerLeft,
-                  transform: isLarge == true ? null : Matrix4.translationValues(125, 0, 0),
-                  width: isLarge == true ? MediaQuery.of(context).size.width - 20 : MediaQuery.of(context).size.width - 150,
-                  child: Text(
-                    content.title,
-                    maxLines: 2,
-                    softWrap: true,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+          Container(
+            width: Get.width - 130,
+            padding: EdgeInsets.only(top: 5),
+            child: Text(
+              content.title,
+              maxLines: 2,
+              softWrap: true,
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+
+// Subtitle
+          if (content.subtitle.isNotEmpty)
+            Container(
+              width: Get.width - 130,
+              child: Text(
+                content.subtitle,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+            ),
+
+// Price
+          Container(
+            width: Get.width - 130,
+            padding: EdgeInsets.only(top: 10),
+            alignment: Alignment.bottomRight,
+            child: Wrap(
+              children: [
+                Text(
+                  PRICE.tr,
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                ),
+                Text(
+                  content.price,
+                  style: const TextStyle(fontSize: 16, color: Colors.red),
                 ),
               ],
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

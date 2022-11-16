@@ -23,7 +23,7 @@ class FilterButton extends StatelessWidget {
           _booksFindPageController.checkText();
         },
         child: Text(
-          FILTER.tr.toUpperCase(),
+          FIND.tr.toUpperCase(),
           style: const TextStyle(fontSize: 14),
         ),
       ),

@@ -44,7 +44,7 @@ class BooksSearchPage extends StatelessWidget {
           controller: _scrollController,
           slivers: [
             SliverAppBar(
-              expandedHeight: MediaQuery.of(context).orientation == Orientation.portrait ? 150 : 1000,
+              expandedHeight: 150,
               elevation: 0,
               backgroundColor: Colors.transparent,
               shadowColor: Colors.transparent,
@@ -104,7 +104,6 @@ class BooksSearchPage extends StatelessWidget {
 // HEADER
   Widget _header() {
     return Container(
-      padding: const EdgeInsets.only(top: 25),
       color: Colors.white,
       child: Wrap(
         alignment: WrapAlignment.center,

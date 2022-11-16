@@ -12,16 +12,20 @@ class InputTextField extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: Padding(
-        padding: const EdgeInsets.only(left: 8, top: 20, right: 8),
+        padding: const EdgeInsets.only(left: 10, top: 20, right: 10),
         child: TextField(
           style: const TextStyle(color: Colors.black87, fontSize: 16),
           controller: _booksFindPageController.controllerTextField.value,
           decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15.0),
+              borderSide: const BorderSide(
+                width: 0,
+                style: BorderStyle.none,
+              ),
+            ),
             filled: true,
             hintText: SEARCHED_TEXT.tr,
-            enabledBorder: InputBorder.none,
-            disabledBorder: InputBorder.none,
-            focusedBorder: InputBorder.none,
             hintStyle: const TextStyle(color: Colors.black38),
             suffixIcon: IconButton(
               onPressed: () {
@@ -30,9 +34,6 @@ class InputTextField extends StatelessWidget {
                 _booksFindPageController.textSearchIsNotEmpty.value = false;
               },
               icon: const Icon(Icons.clear),
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30),
             ),
           ),
           onChanged: (value) {

@@ -20,8 +20,8 @@ class BookDetailsBody extends StatelessWidget {
     _bookDetailsController.fetchData();
 
     return RawScrollbar(
-        thumbColor: Colors.grey,
-        thickness: 3,
+        thumbColor: Colors.red,
+        thickness: 5,
         controller: _scrollController,
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -56,9 +56,71 @@ class BookDetailsBody extends StatelessWidget {
                                       ),
                                     ),
                                   ),
+                                  Container(
+                                    width: 50,
+                                    height: 20,
+                                    color: Colors.red,
+                                    margin: const EdgeInsets.only(left: 50, top: 20),
+                                    child: Center(
+                                      child: Text(
+                                        _bookDetailsController.bookDetails.value.year,
+                                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+                                      ),
+                                    ),
+                                  )
                                 ],
                               ),
+
                               divider(0, 0, 0, 0),
+
+// Block - Price, Rating, Pages
+                              Container(
+                                padding: const EdgeInsets.only(left: 20, bottom: 10, top: 20, right: 20),
+                                alignment: Alignment.center,
+                                child: Wrap(
+                                  spacing: 20,
+                                  children: [
+                                    Wrap(
+                                      children: [
+                                        Text(
+                                          PRICE.tr,
+                                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                                        ),
+                                        Text(
+                                          _bookDetailsController.bookDetails.value.price,
+                                          style: const TextStyle(fontSize: 16, color: Colors.red),
+                                        ),
+                                      ],
+                                    ),
+                                    Wrap(
+                                      children: [
+                                        Text(
+                                          RATING.tr,
+                                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                                        ),
+                                        Text(
+                                          _bookDetailsController.bookDetails.value.rating,
+                                          style: const TextStyle(fontSize: 16, color: Colors.red),
+                                        ),
+                                      ],
+                                    ),
+                                    Wrap(
+                                      children: [
+                                        Text(
+                                          PAGES.tr,
+                                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                                        ),
+                                        Text(
+                                          _bookDetailsController.bookDetails.value.pages,
+                                          style: const TextStyle(fontSize: 16),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                              divider(0, 3, 0, 0),
 
 // Authors
                               Container(
@@ -144,6 +206,29 @@ class BookDetailsBody extends StatelessWidget {
                                         softWrap: true,
                                       ),
                                     ],
+                                  ),
+                                ),
+                              ),
+                              divider(0, 10, 0, 10),
+// Full info
+                              InkWell(
+                                onTap: () {
+                                  final Uri url = Uri.parse(_bookDetailsController.bookDetails.value.url);
+                                  _launchInBrowser(url);
+                                },
+                                child: Container(
+                                  color: Colors.pink,
+                                  alignment: Alignment.center,
+                                  width: Get.width,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Text(
+                                      GO_TO_WEB_SITE.tr,
+                                      textAlign: TextAlign.end,
+                                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color: Colors.white),
+                                      maxLines: 2,
+                                      softWrap: true,
+                                    ),
                                   ),
                                 ),
                               ),

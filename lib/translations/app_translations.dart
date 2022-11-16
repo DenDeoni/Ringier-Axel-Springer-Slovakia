@@ -17,6 +17,9 @@ const String PUBLISHER = 'publisher';
 const String PAGES = 'pages';
 const String YEAR = 'year';
 const String PRICE = 'price';
+const String RATING = 'rating';
+const String AUTHORS = 'authors';
+const String GO_TO_WEB_SITE = 'goToWebSite';
 
 class AppTranslations extends Translations {
   @override
@@ -39,7 +42,10 @@ class AppTranslations extends Translations {
           PUBLISHER: 'Publisher: ',
           PAGES: 'Pages: ',
           YEAR: 'Year: ',
-          PRICE: 'Price: '
+          PRICE: 'Price: ',
+          RATING: 'Rating: ',
+          AUTHORS: 'Authors: ',
+          GO_TO_WEB_SITE: 'Go to web site',
         },
 
         // CZECH LANGUAGE
@@ -61,7 +67,10 @@ class AppTranslations extends Translations {
           PUBLISHER: 'Vydavatel: ',
           PAGES: 'Stránek: ',
           YEAR: 'Rok: ',
-          PRICE: 'Cena: '
+          PRICE: 'Cena: ',
+          RATING: 'Rating: ',
+          AUTHORS: 'Autor: ',
+          GO_TO_WEB_SITE: 'Přejít na web',
         },
       };
 }
